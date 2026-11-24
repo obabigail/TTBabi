@@ -1,14 +1,6 @@
-import sys
-from pathlib import Path
-
 import streamlit as st
 
-# verificação da raiz do projeto.
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
 from regras.dnd_2024.habilidades import modificador_habilidades
-
-NOMES_ATRIBUTOS = ("FOR", "DES", "CON", "INT", "SAB", "CAR")
 
 
 # Atualiza o atributo do personagem com o valor armazenado no widget correspondente.
@@ -20,7 +12,7 @@ def atualizar_atributos(nome: str):
 def renderizar_atributos():
     # Obtém as pontuações dos atributos armazenadas no estado do personagem.
     pontuacoes = st.session_state["personagem"]["atributos"]
-    for nome in NOMES_ATRIBUTOS:
+    for nome in st.session_state["personagem"]["atributos"]:
         chave_widget = f"_atributo_{nome}"
 
         # Inicializa a chave auxiliar com a pontuação atual, caso ainda não exista.

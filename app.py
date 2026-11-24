@@ -1,13 +1,10 @@
 import streamlit as st
 
-from components.inputs_habilidades import NOMES_ATRIBUTOS, renderizar_atributos
+from components.inputs_habilidades import renderizar_atributos
+from models.personagem import criar_personagem
 
 if "personagem" not in st.session_state:
-    st.session_state["personagem"] = {
-        "atributos": {
-            nome: 10 for nome in NOMES_ATRIBUTOS
-        }
-    }
+    st.session_state["personagem"] = criar_personagem()
 
 etapa = st.radio(
     "Etapa da criação",
